@@ -7,7 +7,8 @@ try {
 
     die("Erreur : " . $e->getMessage());
 }
-
+$reqDestru=$bdd->prepare("TRUNCATE TABLE CATEGORIE");
+$reqDestru->execute();
 $req=$bdd->prepare("insert into CATEGORIE VALUES(1, 'Drame' )");
 $req->execute();
 $req2 = $bdd->prepare("select * from categorie");
