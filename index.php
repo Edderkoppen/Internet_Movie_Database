@@ -1,42 +1,104 @@
-<?php
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Righteous&family=Roboto+Condensed:wght@100;200;300&display=swap" rel="stylesheet">
+    <title>InternetMovies</title>
+</head>
+<body>
 
-try {
-    $bdd = new PDO("mysql:host=internetmovies.c3yl2ts7fxxr.eu-west-3.rds.amazonaws.com; dbname=internetmovies; charset=utf8", "Mathieu", "internetmoviesbdd", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+<!---------------- HEADER ---------------->
 
-} catch (Exception $e) {
+<header id="header">
+    <div class="logo-haut">
+        <div class="name">Internet MOVIE</div> <div><img class="logo-name" src="./images/bullet_train.jpg" alt="logo"></div>
+    </div>
+    <div class="menu">
+        <div class="lien"><a href=""> <i class="fa-solid fa-house"></i> Accueil /</a></div>
+        <div class="lien"><a href=""><i class="fa-solid fa-book"></i></i> Filmographie /</a></div>
+        <div class="lien"><a href=""><i class="fa-solid fa-truck"></i></i> Categories /</a></div>
+        <div class="lien"><a href=""> <i class="fa-solid fa-envelope"></i> Panier </a></div>
+    </div>
 
-    die("Erreur : " . $e->getMessage());
-}
-$reqDestru=$bdd->prepare("TRUNCATE TABLE CATEGORIE");
-$reqDestru->execute();
-$req=$bdd->prepare("insert into CATEGORIE VALUES(1, 'Drame' )");
-$req->execute();
-$req2 = $bdd->prepare("select * from categorie");
-$req2->execute();
-$test = $req2->fetchAll();
+</header>
 
-foreach ($test as $test) {
 
-?>
+    <!---------------- CONTENU ---------------->
+    <div class="container_right">
+        <main id="main">
+            <?php
 
-    <p> <?php echo $test['nom_categorie']; ?> </p>
+            try {
+                $bdd = new PDO("mysql:host=localhost; dbname=internetmovies; charset=utf8", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
 
-<?php
-}
+            } catch (Exception $e) {
 
-$coucou = false;
-$i = 0;
-while (!$coucou) {
+                die("Erreur : " . $e->getMessage());
+            }
 
-?>
-    <p style="color:red"> <?php echo "test autre"; ?></p>
+            $reqUse=$bdd->prepare("use internetmovies");
+            $reqUse->execute();
+            $reqDestru=$bdd->prepare("truncate table CATEGORIE");
+            $reqDestru->execute();
+            $req=$bdd->prepare("insert into CATEGORIE VALUES(1, 'Drame' )");
+            $req->execute();
+            $req2 = $bdd->prepare("select * from categorie");
+            $req2->execute();
+            $test = $req2->fetchAll();
 
-<?php
-    $i++;
-    if ($i == 5) {
-        $coucou = true;
-    }
-}
+            foreach ($test as $test) {
 
-?>
+                ?>
+
+                <p> <?php echo $test['nom_categorie']; ?> </p>
+
+                <?php
+            }
+
+            $coucou = false;
+            $i = 0;
+            while (!$coucou) {
+
+                ?>
+                <p style="color:red"> <?php echo "test autre"; ?></p>
+
+                <?php
+                $i++;
+                if ($i == 5) {
+                    $coucou = true;
+                }
+            }
+
+            ?>
+
+
+        </main>
+    </div>
+</div>
+
+<!---------------- FOOTER ---------------->
+<footer id="footer">
+
+    <div class="logo-bas">
+        <img class="logo" src="./images/bullet_train.jpg" alt="logo">
+    </div>
+
+    <div class="menu-bas">
+        <div><a class="a-bas" href="" target="_blank"><i class="fa-solid fa-question"></i> FAQ</a></div>
+        <div>|</div>
+        <div><a class="a-bas" href="" target="_blank"><i class="fa-solid fa-file-contract"></i> Mentions légales</a></div>
+        <div>|</div>
+        <div><a class="a-bas" href=""> <i class="fa-solid fa-mug-hot"></i> Contact</a></div>
+    </div>
+
+</footer>
+
+</body>
+</html>
 
