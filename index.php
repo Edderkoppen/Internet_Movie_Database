@@ -17,7 +17,7 @@
 
 <header id="header">
     <div class="logo-haut">
-        <div class="name">Internet MOVIE</div> <div><img class="logo-name" src="./images/bullet_train.jpg" alt="logo"></div>
+        <div><img class="logo-name" src="images/logo.png" alt="logo"></div>
     </div>
     <div class="menu">
         <div class="lien"><a href=""> <i class="fa-solid fa-house"></i> Accueil /</a></div>
@@ -44,19 +44,19 @@
 
             $reqUse=$bdd->prepare("use internetmovies");
             $reqUse->execute();
-            $reqDestru=$bdd->prepare("truncate table CATEGORIE");
-            $reqDestru->execute();
-            $req=$bdd->prepare("insert into CATEGORIE VALUES(1, 'Drame' )");
-            $req->execute();
-            $req2 = $bdd->prepare("select * from categorie");
+            $req2 = $bdd->prepare("select * from FILM;");
             $req2->execute();
             $test = $req2->fetchAll();
 
             foreach ($test as $test) {
 
                 ?>
-
-                <p> <?php echo $test['nom_categorie']; ?> </p>
+                <div>
+                    <p> <?php echo $test['image_path']; ?> </p>
+                    <img src="<?php $test['image_path']; ?>" alt="test" />
+                    <p> <?php echo $test['titre']; ?> </p>
+                    <p> <?php echo $test['film_description']; ?> </p>
+                </div>
 
                 <?php
             }
@@ -86,7 +86,7 @@
 <footer id="footer">
 
     <div class="logo-bas">
-        <img class="logo" src="./images/bullet_train.jpg" alt="logo">
+        <img class="logo" src="images/logo.png" alt="logo">
     </div>
 
     <div class="menu-bas">
