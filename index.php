@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $bdd = new PDO("mysql:host=localhost; dbname=internetmovies; charset=utf8", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+    $bdd = new PDO("mysql:host=internetmovies.c3yl2ts7fxxr.eu-west-3.rds.amazonaws.com; dbname=internetmovies; charset=utf8", "Mathieu", "internetmoviesbdd", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
 
 } catch (Exception $e) {
 
@@ -24,7 +24,19 @@ foreach ($test as $test) {
 <?php
 }
 
-echo "test Ryan";
+$coucou = false;
+$i = 0;
+while (!$coucou) {
+
+?>
+    <p style="color:red"> <?php echo "test autre"; ?></p>
+
+<?php
+    $i++;
+    if ($i == 5) {
+        $coucou = true;
+    }
+}
 
 ?>
 
