@@ -1,14 +1,16 @@
 <?php
 
-Class QuerieController {
+namespace controller;
 
-    public function selectQuerie($what, $where){
-        return "select " . $what . " from " . $where . ";";
+class QuerieController
+{
+    public $coucou;
+
+    public function __construct($coucou){
+        $this->coucou = $coucou;
+    }
+    public function selectQuerie($coucou){
+        echo $coucou;
     }
 
-    public function selectFilmQuerie($what, $where, $type, $content) {
-        return "select " . $what . " from " . $where . "\n"
-                . " where " . $type . " = " . $content . ";";
-
-    }
 }

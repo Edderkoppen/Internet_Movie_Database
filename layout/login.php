@@ -1,3 +1,8 @@
+<head>
+    <title>login</title>
+    <link rel="stylesheet" href="../css/header.css"/>
+</head>
+
 <div class="container" id="container">
     <div class="form-container sign-up-container">
         <form action="#">
@@ -33,4 +38,17 @@
         </div>
     </div>
 </div>
-<script  src="./script.js"></script>
+
+<script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+</script>
