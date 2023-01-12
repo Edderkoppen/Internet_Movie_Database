@@ -1,25 +1,14 @@
 <?php
 
-try {
+Class QuerieController {
 
-    $bdd = new PDO("mysql:host=localhost; dbname=internetmovies; charset=utf8", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+    public function selectQuerie($what, $where){
+        return "select " . $what . " from " . $where . ";";
+    }
 
-} catch (Exception $e) {
+    public function selectFilmQuerie($what, $where, $type, $content) {
+        return "select " . $what . " from " . $where . "\n"
+                . " where " . $type . " = " . $content . ";";
 
-    die("Erreur : " . $e->getMessage());
+    }
 }
-
-
-class QuerieController {
-
-    public $bdd;
-
-    public function querieTest($bdd) {
-        $reqTest = $bdd->prepare("select * from film;");
-        $reqTest->execute();
-        echo $reqTest;
-
-}
-}
-// Ajouter une classe qui prends en paramètre un bdd.
-// Faire toutes les méthodes faisant appel a une requete SQL.

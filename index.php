@@ -1,10 +1,19 @@
+<?php
+
+function testQuerie($what, $where) {
+    return "Select " . $what . " from " . $where . " where id_categorie = 2;";
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/css.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +43,7 @@
         <main id="main">
             <?php
 
+            use controller\QuerieController\QuerieController;
             try {
                 $bdd = new PDO("mysql:host=localhost; dbname=internetmovies; charset=utf8", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
 
@@ -44,16 +54,18 @@
 
             $reqUse=$bdd->prepare("use internetmovies");
             $reqUse->execute();
-            $req2 = $bdd->prepare("select * from FILM;");
+            $req2 = $bdd->prepare(testQuerie("*", "FILM"));
             $req2->execute();
             $test = $req2->fetchAll();
 
             foreach ($test as $test) {
+//            $plop = new QuerieController();
 
                 ?>
-                <div>
+                <div class ="test">
+                    <?php include 'views\Accueil.html'; ?>
                     <p> <?php echo $test['image_path']; ?> </p>
-                    <img src="<?php $test['image_path']; ?>" alt="test" />
+                    <?php echo "<img class= \"test\" src=\"" . $test['image_path'] . "\" alt=\"test\" >"; ?>
                     <p> <?php echo $test['titre']; ?> </p>
                     <p> <?php echo $test['film_description']; ?> </p>
                 </div>

@@ -1,8 +1,9 @@
 <?php
 
-namespace Controller;
+Class Controller {
 
-class Controller {
-
+    public function test(){
+        include "../views/header.html";
+    }
 
 }
