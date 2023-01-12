@@ -15,7 +15,7 @@
     $donnee = $requete->fetchAll();
 ?>
 
-<div class="box" id="box">
+<div class="box" id="box-login">
     <div class="form-container sign-up-container">
         <form action="#">
             <h1>S'inscrire</h1>
@@ -53,7 +53,7 @@
 <script>
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
-    const container = document.getElementById('container');
+    const container = document.getElementById('box-login');
 
     signUpButton.addEventListener('click', () => {
         container.classList.add("right-panel-active");
