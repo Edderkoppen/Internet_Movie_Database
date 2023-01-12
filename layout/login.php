@@ -1,7 +1,19 @@
-<head>
-    <title>login</title>
-    <link rel="stylesheet" href="../css/header.css"/>
-</head>
+<?php include_once "../views/meta.html"; ?>
+
+<body>
+
+<?php
+    include_once "../views/header.html";
+    use controller\QuerieController\QuerieController;
+    include_once("../model/connection.php");
+
+    $requete = $bdd->prepare("select * from FILM where id_categorie = 1");
+    $requete->execute();
+    $requeteSection = $bdd->prepare("select nom_categorie from categorie where id_categorie = 1");
+    $requeteSection->execute();
+    $section = $requeteSection->fetchAll();
+    $donnee = $requete->fetchAll();
+?>
 
 <div class="container" id="container">
     <div class="form-container sign-up-container">
@@ -38,7 +50,6 @@
         </div>
     </div>
 </div>
-
 <script>
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');

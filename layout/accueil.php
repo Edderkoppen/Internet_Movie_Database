@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Accueil </title>
+    <title> InternetMovies </title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/styles.css"/>
     <link rel="stylesheet" href="fontawesome.min.css"/>
@@ -11,29 +11,33 @@
 <body>
     <?php
         include_once "../views/header.html";
-        use controller\QuerieController\QuerieController;
+        include_once "../controller/QuerieController.php";
         include_once("../model/connection.php");
+        use controller\QuerieController;
 
+        $test = new QuerieController("test");
+        $test->selectQuerie("coucouqlisdfh");
         $requete = $bdd->prepare("select * from FILM");
         $requete->execute();
         $donnee = $requete->fetchAll();
     ?>
 
     <section id="last">
-        <h2 class="last-titre">Dernier film Ajouté</h2>
+        <h2 class="titre">Derniers films</h2>
         <a class="plus" href="#"> Voir plus</a>
-        <ul class="cS-hidden">
+        <ul class="alignement">
 
         <?php foreach ($donnee as $donnee) { ?>
             <li class="item-1">
                 <div class="last-box">
                     <div class="last-img-1">
+                        <div class="qualite">HDRip</div>
                         <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
                     </div>
 
                     <div class="last-txt-1">
                         <strong><?php echo $donnee['titre']; ?></strong>
-                        <p><?php echo $donnee['image_path']; ?></p>
+                        <p><?php echo $donnee['prix'] . "€"; ?></p>
                     </div>
                 </div>
             </li>
@@ -41,5 +45,8 @@
 
         </ul>
     </section>
+
+    <?php include_once "../views/footer.html"; ?>
+
 </body>
 </html>
