@@ -1,41 +1,35 @@
-<html>
+<?php
 
-<?php include_once "../views/meta.html"; ?>
+include_once "../views/meta.html";
+include_once "../views/header.php";
+include_once "../controller/QuerieController.php";
+include_once "../controller/DisplayController.php";
+include_once "../model/connection.php";
 
-<body>
+use controller\QuerieController;
+use controller\DisplayController;
 
-    <?php
-    include_once "../views/header.html";
-    include_once "../controller/QuerieController.php";
-    include_once "../controller/DisplayController.php";
-    include_once "../model/connection.php";
+$display = new DisplayController();
+$querie = new QuerieController();
 
-    use controller\QuerieController;
+$requete = $bdd->prepare( $querie->selectLimitOffsetQuerie("*", "FILM", "4", "3")); //
+$requete->execute();
+$reponse = $requete->fetchAll();
 
-    use controller\DisplayController;
-    $display = new DisplayController();
-    $querie = new QuerieController();
+$display->displayFilmsAccueil($reponse, "Derniers ajouts"); // Affichage du bandeau "derniers ajouts".
 
-    $requete = $bdd->prepare( $querie->selectLimitQuerie("*", "FILM", "4")); //
-    $requete->execute();
-    $reponse = $requete->fetchAll();
+$requete = $bdd->prepare($querie->selectWhereLimitQuerie("*", "FILM", "id_categorie", "1", "6"));
+$requete->execute();
+$reponse = $requete->fetchAll();
 
-    $display->displayFilmsAccueil($reponse, "Derniers films");
+$display->displayFilmsAccueil($reponse, "Action"); // Affichage du bandeau "action".
 
-    $requete = $bdd->prepare($querie->selectWhereLimitQuerie("*", "FILM", "id_categorie", "1", "6"));
-    $requete->execute();
-    $reponse = $requete->fetchAll();
+$requete = $bdd->prepare($querie->selectWhereLimitQuerie("*", "FILM", "id_categorie", "2", "6"));
+$requete->execute();
+$reponse = $requete->fetchAll();
 
-    $display->displayFilmsAccueil($reponse, "Action");
+$display->displayFilmsAccueil($reponse, "Drame"); // Affichage du bandeau "drame".
 
-    $requete = $bdd->prepare($querie->selectWhereLimitQuerie("*", "FILM", "id_categorie", "2", "6"));
-    $requete->execute();
-    $reponse = $requete->fetchAll();
+include_once "../views/footer.html";
+?>
 
-    $display->displayFilmsAccueil($reponse, "Drame");
-
-    include_once "../views/footer.html";
-    ?>
-
-</body>
-</html>

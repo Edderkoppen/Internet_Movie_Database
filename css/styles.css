@@ -241,6 +241,11 @@ h2 {
 
 /*login*/
 
+#box-login {
+    margin-bottom: 250px;
+}
+
+
 .box h1 {
     color: white;
     font-weight: bold;
@@ -525,3 +530,62 @@ h6 {
     background-color:#ea4c89
 }
 
+/*detail film*/
+h1{
+    font-size: 40px;
+}
+.detail {
+    margin: 70px 200px 70px 200px;
+    padding: 40px;
+    background-color: #c7c3c3;
+    width: 800px;
+    border-radius: 30px;
+    box-shadow: 0 14px 28px rgb(238, 234, 234,0.2),
+    0 10px 10px rgba(0,0,0,0.2);
+}
+
+.detail-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+}
+.detail-img img{
+    height: 600px;
+}
+.detail-film{
+    margin: 0px;
+}
+.detail-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    line-height: 30px;
+    text-transform: none;
+}
+.detail-info a{
+    text-decoration: none;
+    color: darkred;
+}
+.detail-info  p{
+    color: #3a3a3a;
+    padding-top: 40px;
+    padding-right: 300px;
+}
+.details-actions{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+
+}
+.iframe{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+iframe{
+    border: 30px solid #000000;
+}
+.detail-titre{
+    color: black;
+}
