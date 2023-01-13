@@ -538,7 +538,6 @@ h1{
     margin: 70px 200px 70px 200px;
     padding: 40px;
     background-color: #c7c3c3;
-    width: 800px;
     border-radius: 30px;
     box-shadow: 0 14px 28px rgb(238, 234, 234,0.2),
     0 10px 10px rgba(0,0,0,0.2);
@@ -570,7 +569,7 @@ h1{
 .detail-info  p{
     color: #3a3a3a;
     padding-top: 40px;
-    padding-right: 300px;
+    padding-right: 30px;
 }
 .details-actions{
     margin-top: 20px;
@@ -579,6 +578,7 @@ h1{
 
 }
 .iframe{
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
