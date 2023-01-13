@@ -1,5 +1,6 @@
 <?php
 
+// coucoucocuocuoc
 function testQuerie($what, $where) {
     return "Select " . $what . " from " . $where . " where id_categorie = 2;";
 }
