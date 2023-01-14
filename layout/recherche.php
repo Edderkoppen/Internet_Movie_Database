@@ -15,7 +15,7 @@ $querie = new QuerieController();
 $test = new Controller();
 
 $terme = $test->protectValue('s');
-$nb = 2;
+$nb = 1;
 
 if ($nb == 1) {
     $requete = $bdd->prepare( $querie->querieRechercheFilm($terme)); //

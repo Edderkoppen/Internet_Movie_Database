@@ -91,23 +91,25 @@ Class DisplayController {
             <div>
                 <h2 class="titre"><?php echo $titre ?></h2>
             </div>
-        <section id="list-film" class="align">
-                <?php foreach ($data as $donnee) { ?>
-                        <a href="../layout/detailFilm.php">
-                            <div class="film-box">
-                                <div class="film-img">
-                                    <div class="qualite">HDRip</div>
-                                    <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
+            <section id="list-film" class="align">
+                    <?php foreach ($data as $donnee) { ?>
+                            <a href="../layout/detailFilm.php">
+                                <div class="film-box">
+                                    <div class="film-img">
+                                        <div class="qualite">HDRip</div>
+                                        <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
+                                    </div>
+                                    <div>
+                                        <a href="#"><?php echo $donnee['titre']; ?></a>
+                                        <a href="#"><?php echo $donnee['prix'] . "€"; ?></a>
+                                    </div>
+                                    <div>
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                    </div>
                                 </div>
-
-                                <div>
-                                    <a href="#"><?php echo $donnee['titre']; ?></a>
-                                    <a href="#"><?php echo $donnee['prix'] . "€"; ?></a>
-                                </div>
-                            </div>
-                        </a>
-                <?php } ?>
-        </section>
+                            </a>
+                    <?php } ?>
+            </section>
     <?php }
 
 
@@ -119,6 +121,9 @@ Class DisplayController {
             <?php foreach ($data as $donnee) { ?>
                 <div class="film-box">
                     <div class="film-img">
+                        <?php echo "<img src=\"../images/top_gun.jpg\">"; ?>
+                    </div>
+                    <div>
                         <a href="#"><?php echo $donnee['nom_producteur']; ?></a>
                         <a href="#"><?php echo $donnee['prenom_producteur']; ?></a>
                     </div>
@@ -176,6 +181,19 @@ Class DisplayController {
         <div class="center">
             <form class="recherche" method="get">
                 <input type="recherche" name="s" placeholder="Rechercher"/>
+            </form>
+
+            <div class="radio">
+                <label >Fitre</label>
+                <select class="select">
+                    <option value=""></option>
+                    <option value="1">Producteur</option>
+                    <option value="2">Film</option>
+
+                </select>
+            </div>
+
+
         </div>
 
         <?php if (empty($data)) { ?>
@@ -211,6 +229,16 @@ Class DisplayController {
         <div class="center">
             <form class="recherche" method="get">
                 <input type="recherche" name="s" placeholder="Rechercher"/>
+            </form>
+            <div class="radio">
+                <label >Fitre</label>
+                <select class="select">
+                    <option value=""></option>
+                    <option value="1">Producteur</option>
+                    <option value="2">Film</option>
+
+                </select>
+            </div>
         </div>
 
         <?php if (empty($data)) { ?>
@@ -226,6 +254,9 @@ Class DisplayController {
             <?php foreach ($data as $donnee) { ?>
                 <div class="film-box">
                     <div class="film-img">
+                        <?php echo "<img src=\"../images/top_gun.jpg\">"; ?>
+                    </div>
+                    <div>
                         <a href="#"><?php echo $donnee['nom_producteur']; ?></a>
                         <a href="#"><?php echo $donnee['prenom_producteur']; ?></a>
                     </div>

@@ -46,13 +46,46 @@ nav .menu li a{
     color: white;
     letter-spacing: 1px;
 }
-.recherche{
-    width: 500px;
+.center{
+    margin-bottom: -15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #242424;
+    padding: 30px;
+    border-bottom: 1px solid white;
+}
+.radio{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.radio label{
+    color: white;
+    font-size: 20px;
+}
+.select{
+    width: 150px;
     height: 40px;
     background-color: rgba(245,245,245,0.8);
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    padding: 0px 20px;
+    margin-left: 20px;
+    outline: none;
+}
+.recherche{
+    border: none;
+    width: 700px;
+    height: 40px;
+    background-color: rgba(245,245,245,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
     border-radius: 10px;
     padding: 0px 20px;
 }
@@ -122,6 +155,7 @@ nav .menu li a:hover{
 
 }
 
+
 .last-box{
     width: 240px;
     display: flex;
@@ -180,6 +214,7 @@ h2 {
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
 .film-box{
     width: 350px;
     display: flex;
@@ -588,9 +623,4 @@ iframe{
 }
 .detail-titre{
     color: black;
-}
-
-.center {
-    border: solid red 3px;
-    align-content: center;
 }
