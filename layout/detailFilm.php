@@ -1,23 +1,24 @@
 <?php
-include_once "../views/meta.html";
-include_once "../views/header.php";
-include_once "../model/connection.php";
-include_once "../controller/QuerieController.php";
-include_once "../controller/DisplayController.php";
+include "../views/meta.html";
+include "../views/header.html";
+include "../model/connection.php";
+include "../controller/QuerieController.php";
+include "../controller/DisplayController.php";
+include "../model/session.php";
+include "../model/test.php";
 
 use controller\QuerieController;
 use controller\DisplayController;
 
 $display = new DisplayController();
 $querie = new QuerieController();
-
-$requete = $bdd->prepare( $querie->blabla("*", "FILM", "titre", "parasite")); //
+$requete = $bdd->prepare($querie->querieDetail("lucy")); //
 $requete->execute();
 $reponse = $requete->fetchAll();
 
 $display->displayDetail($reponse);
 
-include_once "../views/footer.html";
+include "../views/footer.html";
 ?>
 
 

@@ -1,9 +1,9 @@
 <?php
-include_once "../views/meta.html";
-include_once "../views/header.php";
-include_once "../model/connection.php";
-include_once "../controller/QuerieController.php";
-include_once "../controller/DisplayController.php";
+include "../views/meta.html";
+include "../views/header.html";
+include "../model/connection.php";
+include "../controller/QuerieController.php";
+include "../controller/DisplayController.php";
 
 use controller\QuerieController;
 use controller\DisplayController;
@@ -17,7 +17,7 @@ $reponse = $requete->fetchAll();
 
 $display->displayProducteur($reponse, "Tous les producteurs");
 
-include_once "../views/footer.html";
+include "../views/footer.html";
 ?>
 
 

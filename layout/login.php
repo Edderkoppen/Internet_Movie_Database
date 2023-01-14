@@ -1,9 +1,9 @@
 <?php
 
-include_once "../views/meta.html";
-include_once "../views/header.php";
-include_once "../model/connection.php";
-include_once "../controller/DisplayController.php";
+include "../views/meta.html";
+include "../views/header.html";
+include "../model/connection.php";
+include "../controller/DisplayController.php";
 
 use controller\QuerieController;
 use controller\DisplayController;
@@ -11,6 +11,6 @@ use controller\DisplayController;
 $display = new DisplayController();
 $display->displayLogin();
 
-include_once "../views/footer.html";
+include "../views/footer.html";
 
 ?>

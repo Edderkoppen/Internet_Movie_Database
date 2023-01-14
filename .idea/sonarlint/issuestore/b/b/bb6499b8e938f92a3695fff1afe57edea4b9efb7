@@ -1,7 +1,0 @@
-
-H	php:S1808/".Add a blank line after this "use" declaration.(½ÖéÝÿÿÿÿÿ
-R	php:S1808"=Move this open curly brace to the beginning of the next line.(íÑ…¾
->	php:S21151")Add password protection to this database.(ÉÛÚ¯
-B	php:S2003C"&Replace "include" with "include_once".(Æê‡Ã8ü÷åªÚ0
-8php:S125?"Remove this commented out code.(ý‘…Åÿÿÿÿÿ
-h	php:S4833C"LReplace "include" with namespace import mechanism through the "use" keyword.(Æê‡Ã8ü÷åªÚ0

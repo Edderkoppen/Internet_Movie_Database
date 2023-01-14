@@ -63,9 +63,9 @@ drop table if exists CLIENT;
 create table CLIENT (id_client integer primary key auto_increment not null,
                         id_identifiant integer not null,
                         nom_client varchar(50) not null,
-                        prenom_client varchar(50) not null,
-                        adresse_email varchar(200),
-                        date_naissance_client date not null,
+                        prenom_client varchar(50),
+                        adresse_email varchar(200) not null,
+                        date_naissance_client date,
                         foreign key (id_identifiant) references IDENTIFIANT(id_identifiant));
 
 

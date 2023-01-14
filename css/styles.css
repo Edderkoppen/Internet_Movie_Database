@@ -47,7 +47,7 @@ nav .menu li a{
     letter-spacing: 1px;
 }
 .recherche{
-    width: 350px;
+    width: 500px;
     height: 40px;
     background-color: rgba(245,245,245,0.8);
     display: flex;
@@ -588,4 +588,9 @@ iframe{
 }
 .detail-titre{
     color: black;
+}
+
+.center {
+    border: solid red 3px;
+    align-content: center;
 }

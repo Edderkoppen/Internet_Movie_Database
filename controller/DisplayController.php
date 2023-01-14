@@ -1,6 +1,8 @@
 <?php
 
 namespace controller;
+use model\Onverra;
+
 Class DisplayController {
 
     public function displayFilmsAccueil($data, $titre){ ?>
@@ -10,21 +12,21 @@ Class DisplayController {
             <a class="plus" href="<?php echo "../layout/categorie" . $titre . ".php" ?>"> Voir plus</a>
             <?php } ?>
             <ul class="alignement">
-
                 <?php foreach ($data as $donnee) { ?>
-                    <li class="item-1">
-                        <div class="last-box">
-                            <div class="last-img-1">
-                                <div class="qualite">HDRip</div>
-                                <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
+                    <a href="../layout/detailFilm.php">
+                        <li class="item-1">
+                            <div class="last-box">
+                                <div class="last-img-1">
+                                    <div class="qualite">HDRip</div>
+                                    <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
+                                </div>
+                                <div class="last-txt-1">
+                                    <strong><?php echo $donnee['titre']; ?></strong>
+                                    <p><?php echo $donnee['prix'] . "€"; ?></p>
+                                </div>
                             </div>
-
-                            <div class="last-txt-1">
-                                <strong><?php echo $donnee['titre']; ?></strong>
-                                <p><?php echo $donnee['prix'] . "€"; ?></p>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    </a>
                 <?php } ?>
 
             </ul>
@@ -84,23 +86,26 @@ Class DisplayController {
         </script>
     <?php }
 
+
     public function displayCategorie($data, $titre){ ?>
             <div>
                 <h2 class="titre"><?php echo $titre ?></h2>
             </div>
         <section id="list-film" class="align">
                 <?php foreach ($data as $donnee) { ?>
-                        <div class="film-box">
-                            <div class="film-img">
-                                <div class="qualite">HDRip</div>
-                                <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
-                            </div>
+                        <a href="../layout/detailFilm.php">
+                            <div class="film-box">
+                                <div class="film-img">
+                                    <div class="qualite">HDRip</div>
+                                    <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
+                                </div>
 
-                            <div>
-                                <a href="#"><?php echo $donnee['titre']; ?></a>
-                                <a href="#"><?php echo $donnee['prix'] . "€"; ?></a>
+                                <div>
+                                    <a href="#"><?php echo $donnee['titre']; ?></a>
+                                    <a href="#"><?php echo $donnee['prix'] . "€"; ?></a>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                 <?php } ?>
         </section>
     <?php }
@@ -133,11 +138,11 @@ Class DisplayController {
                     <div class="wrap">
                         <h1> <?php echo $donnee["titre"]; ?> </h1>
                         <div class="detail-info">
-                            <a href="#">Genre: Film</a>
-                            <a href="#">Producteur: </a>
-                            <a href="#">Acteurs: </a>
-                            <a href="#">Catégorie: </a>
-                            <a href="#">Duré: 150 min</a>
+                            <a href="#">Genre: <?php echo $donnee["nom_categorie"] ?></a>
+                            <a href="#">Producteur: <?php echo $donnee["prenom_producteur"] . " " . $donnee["nom_producteur"]?> </a>
+                            <a href="#">Acteurs: <?php echo $donnee["prenom_acteur"] . " " . $donnee["nom_acteur"]?></a>
+                            <a href="#">Catégorie: <?php echo $donnee["nom_categorie"] ?></a>
+                            <a href="#">Durée: 150 min</a>
                             <p>
                                 Synopsis :<br/>
                                 <?php echo $donnee["film_description"]; ?>
@@ -165,6 +170,68 @@ Class DisplayController {
             </div>
         </div>
 
+    <?php }
+
+    public function displayRecherche($data, $terme){ ?>
+        <div class="center">
+            <form class="recherche" method="get">
+                <input type="recherche" name="s" placeholder="Rechercher"/>
+        </div>
+
+        <?php if (empty($data)) { ?>
+            <div>
+                <h2 class="titre">Rien pour la recherche "<?php echo $terme ?>"</h2>
+            </div>
+        <?php } else { ?>
+            <div>
+                <h2 class="titre">Nos films ou producteurs contenant "<?php echo $terme ?>"</h2>
+            </div>
+            <?php } ?>
+        <section id="list-film" class="align">
+            <?php foreach ($data as $donnee) { ?>
+                <a href="../layout/detailFilm.php">
+                    <div class="film-box">
+                        <div class="film-img">
+                            <div class="qualite">HDRip</div>
+                            <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
+                        </div>
+
+                        <div>
+                            <a href="#"><?php echo $donnee['titre']; ?></a>
+                            <a href="#"><?php echo $donnee['prix'] . "€"; ?></a>
+                        </div>
+                    </div>
+                </a>
+            <?php } ?>
+        </section>
+    <?php }
+
+
+    public function displayHistorique($data, $titre){ ?>
+        <section id="last">
+            <div>
+                <h2 class="titre">Achats de <?php echo $titre; ?></h2>
+            </div>
+            <ul class="alignement">
+                <?php foreach ($data as $donnee) { ?>
+                    <a href="../layout/detailFilm.php">
+                        <li class="item-1">
+                            <div class="last-box">
+                                <div class="last-img-1">
+                                    <div class="qualite">HDRip</div>
+                                    <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
+                                </div>
+                                <div class="last-txt-1">
+                                    <strong><?php echo $donnee['titre']; ?></strong>
+                                    <p><?php echo $donnee['prix'] . "€"; ?></p>
+                                </div>
+                            </div>
+                        </li>
+                    </a>
+                <?php } ?>
+
+            </ul>
+        </section>
     <?php }
 
 } ?>

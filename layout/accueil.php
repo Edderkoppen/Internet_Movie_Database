@@ -1,10 +1,10 @@
 <?php
 
-include_once "../views/meta.html";
-include_once "../views/header.php";
-include_once "../controller/QuerieController.php";
-include_once "../controller/DisplayController.php";
-include_once "../model/connection.php";
+include "../views/meta.html";
+include "../views/header.html";
+include "../controller/QuerieController.php";
+include "../controller/DisplayController.php";
+include "../model/connection.php";
 
 use controller\QuerieController;
 use controller\DisplayController;
@@ -30,6 +30,6 @@ $reponse = $requete->fetchAll();
 
 $display->displayFilmsAccueil($reponse, "Drame"); // Affichage du bandeau "drame".
 
-include_once "../views/footer.html";
+include "../views/footer.html";
 ?>
 

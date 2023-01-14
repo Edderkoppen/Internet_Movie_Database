@@ -12,14 +12,15 @@ use controller\Controller;
 
 $display = new DisplayController();
 $querie = new QuerieController();
-$test = new Controller();
+$control = new Controller();
 
-$terme = $test->protectValue('s');
-$requete = $bdd->prepare( $querie->querieRecherche($terme)); //
+$requete = $bdd->prepare( $querie->querieHistorique("ryan")); //
 $requete->execute();
 $reponse = $requete->fetchAll();
 
-$display->displayRecherche($reponse, $terme);
+$name = $control->getName($reponse);
+$display->displayHistorique($reponse, $name);
 
 include "../views/footer.html";
+
 ?>
