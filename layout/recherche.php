@@ -15,11 +15,24 @@ $querie = new QuerieController();
 $test = new Controller();
 
 $terme = $test->protectValue('s');
-$requete = $bdd->prepare( $querie->querieRecherche($terme)); //
-$requete->execute();
-$reponse = $requete->fetchAll();
+$nb = 2;
 
-$display->displayRecherche($reponse, $terme);
+if ($nb == 1) {
+    $requete = $bdd->prepare( $querie->querieRechercheFilm($terme)); //
+    $requete->execute();
+    $reponse = $requete->fetchAll();
+
+    $display->displayRechercheFilm($reponse, $terme);
+
+} else if ($nb ==2) {
+
+    $requete = $bdd->prepare( $querie->querieRechercheProducteur($terme)); //
+    $requete->execute();
+    $reponse = $requete->fetchAll();
+
+    $display->displayRechercheProducteur($reponse, $terme);
+}
+
 
 include "../views/footer.html";
 ?>

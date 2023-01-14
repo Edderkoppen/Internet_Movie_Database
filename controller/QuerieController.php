@@ -27,9 +27,9 @@ class QuerieController
     }
 
     public function querieDetail($terme){
-        return "select film.titre, film.film_description, film.image_path, film.prix, categorie.nom_categorie,
-                       producteur.nom_producteur, producteur.prenom_producteur, acteur.nom_acteur,
-                       acteur.prenom_acteur from FILM
+        return "select film.titre, film.film_description, film.image_path, film.prix, film.lien,
+                        categorie.nom_categorie, producteur.nom_producteur, producteur.prenom_producteur, acteur.nom_acteur,
+                        acteur.prenom_acteur from FILM
                 inner join produit on produit.id_film = film.id_film
                 inner join producteur on producteur.id_producteur = produit.id_producteur
                 inner join casting on casting.id_film = film.id_film
@@ -46,14 +46,14 @@ class QuerieController
                 where client.prenom_client like '" . $user . "%';";
     }
 
-    public function querieRecherche($terme){
-        return "select * from FILM
-                where titre
-                like '" .$terme . "%';";
+    public function querieRechercheFilm($terme){
+        return "select * from FILM where titre like '" .$terme . "%';";
     }
 
 
-    public function selectWhereLikeQuerie($data, $from, $where, $like) {
-        return "select " . $data . " from " . $from . " where " . $where . " like  '" . $like . "';";
+    public function querieRechercheProducteur($terme){
+        return "select * from PRODUCTEUR where nom_producteur like '" .$terme . "%' or prenom_producteur like '" .$terme . "%';";
     }
+
+
 } ?>

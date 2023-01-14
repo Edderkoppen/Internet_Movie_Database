@@ -43,7 +43,7 @@ Class DisplayController {
                     <input type="text" placeholder="Nom" />
                     <input type="email" placeholder="Email" />
                     <input type="password" placeholder="Mot de passe" />
-                    <input type="password" placeholder="Comfirmation" />
+                    <input type="password" placeholder="Confirmation" />
                     <button class="btn">S'inscrire</button>
                 </form>
             </div>
@@ -51,7 +51,7 @@ Class DisplayController {
                 <form action="#">
                     <h1>Se connecter</h1>
                     <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
+                    <input type="password" placeholder="Mot de passe" />
                     <a href="#">Mot de passe oublié ?</a>
                     <button class="btn">Se connecter</button>
                 </form>
@@ -59,14 +59,14 @@ Class DisplayController {
             <div class="overlay-container">
                 <div class="overlay">
                     <div class="overlay-panel overlay-left">
-                        <h1>Welcome Back!</h1>
-                        <p>To keep connected with us please login with your personal info</p>
-                        <button class="ghost btn" id="signIn">Sign In</button>
+                        <h1>Bienvenue !</h1>
+                        <p>Pour rester avec nous, connectez vous avec vos informations personnelles</p>
+                        <button class="ghost btn" id="signIn">Se connecter</button>
                     </div>
                     <div class="overlay-panel overlay-right">
-                        <h1>Hello, Friend!</h1>
-                        <p>Enter your personal details and start journey with us</p>
-                        <button class="ghost btn" id="signUp">Sign Up</button>
+                        <h1>Signez ici !</h1>
+                        <p>Entrez vos informations pour débuter avec nous !</p>
+                        <button class="ghost btn" id="signUp">S'inscrire</button>
                     </div>
                 </div>
             </div>
@@ -128,9 +128,9 @@ Class DisplayController {
     <?php }
 
     public function displayDetail($data){ ?>
-        <section class="detail">
-        <div class="detail-box">
         <?php foreach ($data as $donnee) { ?>
+            <section class="detail">
+            <div class="detail-box">
                 <figure class="detail-img">
                     <img src="../<?php echo $donnee["image_path"];?>" alt="poster">
                 </figure>
@@ -154,25 +154,25 @@ Class DisplayController {
 
                     </div>
                 </div>
-            <?php } ?>
+
             </div>
         </section>
         <div class="detail">
             <h2 class="detail-titre"> Trailers</h2>
             <div class="iframe">
-
                 <iframe width="1000" height="600"
-                        src="https://www.youtube.com/embed/qSqVVswa420"
+                        src= "<?php echo $donnee["lien"];?>"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen>
                 </iframe>
             </div>
         </div>
-
+        <?php } ?>
     <?php }
 
-    public function displayRecherche($data, $terme){ ?>
+
+    public function displayRechercheFilm($data, $terme){ ?>
         <div class="center">
             <form class="recherche" method="get">
                 <input type="recherche" name="s" placeholder="Rechercher"/>
@@ -184,7 +184,7 @@ Class DisplayController {
             </div>
         <?php } else { ?>
             <div>
-                <h2 class="titre">Nos films ou producteurs contenant "<?php echo $terme ?>"</h2>
+                <h2 class="titre">Nos films contenant "<?php echo $terme ?>"</h2>
             </div>
             <?php } ?>
         <section id="list-film" class="align">
@@ -205,6 +205,35 @@ Class DisplayController {
             <?php } ?>
         </section>
     <?php }
+
+
+    public function displayRechercheProducteur($data, $terme){ ?>
+        <div class="center">
+            <form class="recherche" method="get">
+                <input type="recherche" name="s" placeholder="Rechercher"/>
+        </div>
+
+        <?php if (empty($data)) { ?>
+            <div>
+                <h2 class="titre">Rien pour la recherche "<?php echo $terme ?>"</h2>
+            </div>
+        <?php } else { ?>
+            <div>
+                <h2 class="titre">Producteurs contenant "<?php echo $terme ?>"</h2>
+            </div>
+        <?php } ?>
+        <section id="list-film" class="align">
+            <?php foreach ($data as $donnee) { ?>
+                <div class="film-box">
+                    <div class="film-img">
+                        <a href="#"><?php echo $donnee['nom_producteur']; ?></a>
+                        <a href="#"><?php echo $donnee['prenom_producteur']; ?></a>
+                    </div>
+                </div>
+            <?php } ?>
+        </section>
+    <?php }
+
 
 
     public function displayHistorique($data, $titre){ ?>

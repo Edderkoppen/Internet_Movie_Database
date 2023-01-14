@@ -12,7 +12,7 @@ use controller\DisplayController;
 
 $display = new DisplayController();
 $querie = new QuerieController();
-$requete = $bdd->prepare($querie->querieDetail("lucy")); //
+$requete = $bdd->prepare($querie->querieDetail("parasi")); //
 $requete->execute();
 $reponse = $requete->fetchAll();
 
