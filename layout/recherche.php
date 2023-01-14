@@ -20,7 +20,7 @@ $terme = $test->protectValue('s');
 //$nb = $test->protectValue("test");
 $display->displayBarreRecherche();
 
-$nb = 2;
+$nb = 1;
 
 if ($nb == 1) {
     $requete = $bdd->prepare( $querie->querieRechercheFilm($terme)); //

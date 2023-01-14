@@ -91,23 +91,26 @@ Class DisplayController {
             <div>
                 <h2 class="titre"><?php echo $titre ?></h2>
             </div>
-            <section id="list-film" class="align">
+                <section id="list-film" class="align">
                     <?php foreach ($data as $donnee) { ?>
-                            <a href="../layout/detailFilm.php">
-                                <div class="film-box">
-                                    <div class="film-img">
-                                        <div class="qualite">HDRip</div>
-                                        <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
-                                    </div>
-
-                                    <div class="film-txt">
-                                        <a href="#"><?php echo $donnee['titre']; ?></a>
-                                        <a href="#"><?php echo $donnee['prix'] . "€"; ?></a>
-                                        <button type="submit" name="add" class="btn">Ajouter au panier</button>
+                        <a href="../layout/detailFilm.php">
+                            <div class="film-box">
+                                <div class="film-img">
+                                    <div class="qualite">HDRip</div>
+                                    <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
                                 </div>
-                            </a>
+
+                                <div class="film-txt">
+                                    <a href="#"><?php echo $donnee['titre']; ?></a>
+                                    <a href="#"><?php echo $donnee['prix'] . "€"; ?></a>
+                                    <button class="btn">Ajouter au panier</button>
+                                </div>
+
+
+                            </div>
+                        </a>
                     <?php } ?>
-            </section>
+                </section>
     <?php }
 
 
@@ -177,7 +180,7 @@ Class DisplayController {
     public function displayBarreRecherche() { ?>
         <div class="center">
             <form class="recherche" method="get">
-                <input type="recherche" name="test" placeholder="Rechercher"/>
+                <input type="recherche" name="s" placeholder="Rechercher"/>
             </form>
             <div class="radio">
                 <label >Fitre</label>
