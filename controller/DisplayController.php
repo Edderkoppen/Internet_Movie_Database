@@ -99,13 +99,14 @@ Class DisplayController {
                                         <div class="qualite">HDRip</div>
                                         <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
                                     </div>
-                                    <div>
+
+                                    <div class="film-txt">
                                         <a href="#"><?php echo $donnee['titre']; ?></a>
                                         <a href="#"><?php echo $donnee['prix'] . "€"; ?></a>
+                                        <button class="btn">Ajouter au panier</button>
                                     </div>
-                                    <div>
-                                        <i class="fa-solid fa-cart-shopping"></i>
-                                    </div>
+
+
                                 </div>
                             </a>
                     <?php } ?>
@@ -214,10 +215,13 @@ Class DisplayController {
                             <?php echo "<img src=\"../" . $donnee['image_path'] . "\" alt=\"affiche " . $donnee["titre"] . "\" >"; ?>
                         </div>
 
-                        <div>
+                        <div class="film-txt">
                             <a href="#"><?php echo $donnee['titre']; ?></a>
                             <a href="#"><?php echo $donnee['prix'] . "€"; ?></a>
+                            <button class="btn">Ajouter au panier</button>
                         </div>
+
+
                     </div>
                 </a>
             <?php } ?>

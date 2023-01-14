@@ -2,6 +2,7 @@
 
 include "../views/meta.html";
 include "../views/header.html";
+include "../views/description.html";
 include "../controller/QuerieController.php";
 include "../controller/DisplayController.php";
 include "../model/connection.php";
