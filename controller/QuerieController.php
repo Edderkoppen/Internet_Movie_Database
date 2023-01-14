@@ -56,4 +56,7 @@ class QuerieController
     }
 
 
+    public function insertQuerie($idFilm, $idUser) {
+        return "insert into achete values (" . $idFilm . ", " . $idUser . ")";
+    }
 } ?>

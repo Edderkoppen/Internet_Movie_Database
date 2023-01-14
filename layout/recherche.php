@@ -14,8 +14,13 @@ $display = new DisplayController();
 $querie = new QuerieController();
 $test = new Controller();
 
+
+
 $terme = $test->protectValue('s');
-$nb = 1;
+//$nb = $test->protectValue("test");
+$display->displayBarreRecherche();
+
+$nb = 2;
 
 if ($nb == 1) {
     $requete = $bdd->prepare( $querie->querieRechercheFilm($terme)); //
@@ -24,7 +29,7 @@ if ($nb == 1) {
 
     $display->displayRechercheFilm($reponse, $terme);
 
-} else if ($nb ==2) {
+} elseif ($nb ==2) {
 
     $requete = $bdd->prepare( $querie->querieRechercheProducteur($terme)); //
     $requete->execute();

@@ -651,3 +651,8 @@ iframe{
 .detail-titre{
     color: black;
 }
+
+.padding {
+    padding-bottom: 500px;
+    margin-bottom: 500px;
+}

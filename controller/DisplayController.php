@@ -103,10 +103,7 @@ Class DisplayController {
                                     <div class="film-txt">
                                         <a href="#"><?php echo $donnee['titre']; ?></a>
                                         <a href="#"><?php echo $donnee['prix'] . "€"; ?></a>
-                                        <button class="btn">Ajouter au panier</button>
-                                    </div>
-
-
+                                        <button type="submit" name="add" class="btn">Ajouter au panier</button>
                                 </div>
                             </a>
                     <?php } ?>
@@ -122,7 +119,7 @@ Class DisplayController {
             <?php foreach ($data as $donnee) { ?>
                 <div class="film-box">
                     <div class="film-img">
-                        <?php echo "<img src=\"../images/top_gun.jpg\">"; ?>
+                        <?php echo "<img src=\"../" . $donnee['photo'] . "\" alt=\"photo " . $donnee["nom_producteur"] . "\" >"; ?>
                     </div>
                     <div>
                         <a href="#"><?php echo $donnee['nom_producteur']; ?></a>
@@ -144,13 +141,12 @@ Class DisplayController {
                     <div class="wrap">
                         <h1> <?php echo $donnee["titre"]; ?> </h1>
                         <div class="detail-info">
-                            <a href="#">Genre: <?php echo $donnee["nom_categorie"] ?></a>
-                            <a href="#">Producteur: <?php echo $donnee["prenom_producteur"] . " " . $donnee["nom_producteur"]?> </a>
-                            <a href="#">Acteurs: <?php echo $donnee["prenom_acteur"] . " " . $donnee["nom_acteur"]?></a>
-                            <a href="#">Catégorie: <?php echo $donnee["nom_categorie"] ?></a>
-                            <a href="#">Durée: 150 min</a>
+                            <a href="#">Genre: <?php echo " " . $donnee["nom_categorie"] ?></a>
+                            <a href="#">Producteur: <?php echo " " . $donnee["prenom_producteur"] . " " . $donnee["nom_producteur"]?> </a>
+                            <a href="#">Acteur: <?php echo " " . $donnee["prenom_acteur"] . " " . $donnee["nom_acteur"]?></a>
+                            <a href="#">Prix: <?php echo " " . $donnee["prix"] . " €"?></a>
                             <p>
-                                Synopsis :<br/>
+                                <strong>Synopsis :</strong><br/>
                                 <?php echo $donnee["film_description"]; ?>
                             </p>
                         </div>
@@ -178,25 +174,25 @@ Class DisplayController {
     <?php }
 
 
-    public function displayRechercheFilm($data, $terme){ ?>
+    public function displayBarreRecherche() { ?>
         <div class="center">
             <form class="recherche" method="get">
-                <input type="recherche" name="s" placeholder="Rechercher"/>
+                <input type="recherche" name="test" placeholder="Rechercher"/>
             </form>
-
             <div class="radio">
                 <label >Fitre</label>
                 <select class="select">
-                    <option value=""></option>
+                    <option value="default">...</option>
                     <option value="1">Producteur</option>
                     <option value="2">Film</option>
 
                 </select>
             </div>
-
-
         </div>
+    <?php }
 
+
+    public function displayRechercheFilm($data, $terme){ ?>
         <?php if (empty($data)) { ?>
             <div>
                 <h2 class="titre">Rien pour la recherche "<?php echo $terme ?>"</h2>
@@ -230,21 +226,6 @@ Class DisplayController {
 
 
     public function displayRechercheProducteur($data, $terme){ ?>
-        <div class="center">
-            <form class="recherche" method="get">
-                <input type="recherche" name="s" placeholder="Rechercher"/>
-            </form>
-            <div class="radio">
-                <label >Fitre</label>
-                <select class="select">
-                    <option value=""></option>
-                    <option value="1">Producteur</option>
-                    <option value="2">Film</option>
-
-                </select>
-            </div>
-        </div>
-
         <?php if (empty($data)) { ?>
             <div>
                 <h2 class="titre">Rien pour la recherche "<?php echo $terme ?>"</h2>
@@ -258,7 +239,7 @@ Class DisplayController {
             <?php foreach ($data as $donnee) { ?>
                 <div class="film-box">
                     <div class="film-img">
-                        <?php echo "<img src=\"../images/top_gun.jpg\">"; ?>
+                        <?php echo "<img src=\"../" . $donnee['photo'] . "\" alt=\"photo " . $donnee["nom_producteur"] . "\" >"; ?>
                     </div>
                     <div>
                         <a href="#"><?php echo $donnee['nom_producteur']; ?></a>

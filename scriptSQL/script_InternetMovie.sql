@@ -36,7 +36,8 @@ create table FILM (id_film integer primary key auto_increment not null,
 drop table if exists PRODUCTEUR;
 create table PRODUCTEUR (id_producteur integer primary key auto_increment not null,
                             nom_producteur varchar(50) not null,
-                            prenom_producteur varchar(50) not null);
+                            prenom_producteur varchar(50) not null,
+                            photo varchar(200) not null );
 
 
 -- ---------------------------- --
@@ -123,7 +124,7 @@ values (1, 1, "Bullet Train", "Cinq tueurs à gages se retrouvent dans un train 
         (4, 1, "Black Widow", "Lorsqu'un complot dangereux en lien avec son passé ressurgit, Natasha Romanoff, alias Black Widow, doit y faire face. Tandis qu'elle se fait poursuivre par une force qui ne s'arrête devant rien, Natasha confronte des liens brisés ainsi que les conséquences de son passé en tant qu'espionne dans un temps avant qu'elle fasse partie des Avengers.", "./images/black_widow.jpg", 16.99, "https://www.youtube.com/embed/riQKcIbnRMk"),
         (5, 1, "Top Gun : Maverick", "Après plus de 30 ans de service en tant que l'un des meilleurs aviateurs de la Marine, Pete Maverick Mitchell est à sa place, repoussant les limites en tant que pilote d'essai courageux et esquivant l'avancement de grade qui le mettrait à la terre. Entraînant de jeunes diplômés pour une mission spéciale, Maverick doit affronter les fantômes de son passé et ses peurs les plus profondes, aboutissant à une mission qui exige le sacrifice ultime de ceux qui choisissent de la piloter.", "./images/top_gun.jpg", 14.99, "https://www.youtube.com/embed/JYaFU81-t6c"),
         (6, 1, "Thor: Love and Thunder", "Thor se lance dans un voyage différent de tout ce qu'il a connu jusqu'à présent : une quête de paix intérieure. Cependant, sa retraite est interrompue par Gorr le boucher des dieux, un tueur galactique qui cherche l'extinction des dieux. Pour combattre la menace, Thor fait appel à l'aide du roi Valkyrie, de Korg et de Jane Foster. Ensemble, ils se lancent dans une aventure cosmique déchirante pour découvrir le mystère de la vengeance du Boucher des Dieux.", "./images/thor.jpg", 16.99, "https://www.youtube.com/embed/K8iHxGiPyZk"),
-        (7, 1, "Jurassic World ", "Isla Nublar et son parc ont été détruits, mais les problèmes ne sont pas terminés. Alors que les dinosaures se sont propagés à travers le monde, les relations tendues entre le présent et le passé alimentent de nouveaux conflits. Le fragile équilibre est mis à l'épreuve et l'avenir fait face à une nouvelle direction. Il est décidé une fois pour toutes quelles espèces doivent exister sur terre.", "./images/jurassic_world.jpg", 9.99, "https://www.youtube.com/embed/8UZ6NOLR9sQ"),
+        (7, 1, "Jurassic World", "Isla Nublar et son parc ont été détruits, mais les problèmes ne sont pas terminés. Alors que les dinosaures se sont propagés à travers le monde, les relations tendues entre le présent et le passé alimentent de nouveaux conflits. Le fragile équilibre est mis à l'épreuve et l'avenir fait face à une nouvelle direction. Il est décidé une fois pour toutes quelles espèces doivent exister sur terre.", "./images/jurassic_world.jpg", 9.99, "https://www.youtube.com/embed/8UZ6NOLR9sQ"),
         (8, 1, "Doctor Strange in the Multiverse of Madness", "Le Docteur Stephen Strange continue ses recherches sur la Pierre du Temps. Cependant, un vieil ami devenu ennemi tente de détruire tous les sorciers de la Terre, ce qui perturbe le plan de Strange.", "./images/docteur_strange.jpg", 16.99, "https://www.youtube.com/embed/KtNV22LOT84"),
         (9, 1, "The Batman", "Dans sa deuxième année de lutte contre le crime, le milliardaire et justicier masqué Batman explore la corruption qui sévit à Gotham et notamment comment elle pourrait être liée à sa propre famille, les Wayne, à qui il doit toute sa fortune. En parallèle, il enquête sur les meurtres d'un tueur en série qui se fait connaître sous le nom de Sphinx et sème des énigmes cruelles sur son passage.", "./images/batman.jpg", 19.99, "https://www.youtube.com/embed/hGQo1axtj60"),
         (10, 1, "John Wick", "Ce qui aurait pu être le banal vol d'une voiture de collection se transforme en une chasse à l'homme sans merci entre un légendaire ex-tueur à gages et le fils d'un des plus grands pontes de la mafia. Entre un homme qui se croit au-dessus des lois et un autre à qui on a pris les deux seuls souvenirs qui le rendaient encore humain, l'affrontement sera de haute volée. Personne n'est décidé à rendre les armes et la guerre sera totale.", "./images/john_wick.jpg", 11.99, "https://www.youtube.com/embed/6itn_8L6-Z8"),
@@ -146,41 +147,41 @@ values (1, 1, "Bullet Train", "Cinq tueurs à gages se retrouvent dans un train 
 -- ---------------------------- --
 --        DATA PRODUCTEUR       --
 -- ---------------------------- --
-insert into PRODUCTEUR (id_producteur, nom_producteur, prenom_producteur)
-values (1, "Leitch", "David"), -- bullet / john wick
-        (2, "Broccoli", "Barbara"), -- spectre
-        (3, "G. Wilson", "Michael"), -- spectre
-        (4, "Arad", "Avi"), -- uncharted
-        (5, "Roven", "Charles"), -- uncharted
-        (6, "Feige", "Kevin"), -- black window / thor
-        (7, "Cruise", "Tom"), -- Top gun
-        (8, "McQuarrie", "Christopher"), -- top gun
-        (9, "Marshall", "Frank"), -- jurassic
-        (10, "Raimi", "Sam"), -- doctor strange
-        (11, "Reeves", "Matt"), -- the batman
-        (12, "Stahelski", "Chad"), -- john wick
-        (13, "Longoria", "Eva"), -- john wick
-        (14, "Besson-Silla", "Virginie"), -- lucy
-        (15, "Reynolds", "Ryan"), -- deadpool
-        (16, "Shuler Donner", "Lauren"), -- deadpool
-        (17, "Duhamel", "Jean"), -- athena
-        (18, "Smith", "Will"), -- la methode williams
-        (19, "Joon-ho", "Bong"), -- parasite
-        (20, "Benedict", "Terry"), -- tu ne tuera point
-        (21, "Mechanic", "Bill"), -- tu ne tuera point
-        (22, "Permut", "Davey"), -- tu ne tuera point
-        (23, "Cooper", "Bradley"), -- a star is born
-        (24, "Howell", "Lynette"), -- a star is born
-        (25, "Singer", "Bryan"), -- rhapsody
-        (26, "De Niro", "Robert"), -- rhapsody
-        (27, "Guadagnino", "Luca"), -- call me by
-        (28, "Ivory", "james"), -- call me by
-        (29, "Vallelonga", "Nick"), -- green book
-        (30, "Farrelly", "Peter"), -- green book
-        (31, "Luhrmann", "Baz"), -- gatsby
-        (32, "Tarantino", "Quentin"), -- django
-        (33, "Fincher", "David"), -- benjamin
-        (34, "Penn", "Sean"); -- into the wild
+insert into PRODUCTEUR (id_producteur, nom_producteur, prenom_producteur, photo)
+values (1, "Leitch", "David", "./images/producteurs/david_leitch.jpeg"), -- bullet / john wick
+        (2, "Broccoli", "Barbara", "./images/producteurs/barbara_broccoli.jpg"), -- spectre
+        (3, "G. Wilson", "Michael", "./images/producteurs/michael_g_wilson.jpeg"), -- spectre
+        (4, "Arad", "Avi", "./images/producteurs/avi_arad.jpeg"), -- uncharted
+        (5, "Roven", "Charles", "./images/producteurs/charles_roven.jpeg"), -- uncharted
+        (6, "Feige", "Kevin", "./images/producteurs/kevin_feige.jpg"), -- black window / thor
+        (7, "Cruise", "Tom", "./images/producteurs/tom_cruise.jpg"), -- Top gun
+        (8, "McQuarrie", "Christopher", "./images/producteurs/christopher_mcquarrie.jpeg"), -- top gun
+        (9, "Marshall", "Frank", "./images/producteurs/frank_marshall.jpeg"), -- jurassic
+        (10, "Raimi", "Sam", "./images/producteurs/sam_raimi.jpeg"), -- doctor strange
+        (11, "Reeves", "Matt", "./images/producteurs/matt_reeves.jpeg"), -- the batman
+        (12, "Stahelski", "Chad", "./images/producteurs/chad_stahelski.jpeg"), -- john wick
+        (13, "Longoria", "Eva", "./images/producteurs/eva_longoria.jpg"), -- john wick
+        (14, "Besson-Silla", "Virginie", "./images/producteurs/virginie_besson_silla.jpeg"), -- lucy
+        (15, "Reynolds", "Ryan", "./images/producteurs/ryan_reynolds.jpg"), -- deadpool
+        (16, "Shuler Donner", "Lauren", "./images/producteurs/lauren_shuler_donner.jpeg"), -- deadpool
+        (17, "Duhamel", "Jean", "./images/producteurs/jean_duhamel.jpg"), -- athena
+        (18, "Smith", "Will", "./images/producteurs/will_smith.jpg"), -- la methode williams
+        (19, "Joon-ho", "Bong", "./images/producteurs/bong_joon_ho.jpg"), -- parasite
+        (20, "Benedict", "Terry", "./images/producteurs/terry_benedict.jpg"), -- tu ne tuera point
+        (21, "Mechanic", "Bill", "./images/producteurs/bill_mechanic.jpeg"), -- tu ne tuera point
+        (22, "Permut", "Davey", "./images/producteurs/david_permut.jpeg"), -- tu ne tuera point
+        (23, "Cooper", "Bradley", "./images/producteurs/bradley_cooper.jpeg"), -- a star is born
+        (24, "Howell", "Lynette", "./images/producteurs/lynette_howell.jpeg"), -- a star is born
+        (25, "Singer", "Bryan", "./images/producteurs/bryan_singer.jpg"), -- rhapsody
+        (26, "De Niro", "Robert", "./images/producteurs/robert_de_niro.jpeg"), -- rhapsody
+        (27, "Guadagnino", "Lucas", "./images/producteurs/lucas_guadagnino.jpeg"), -- call me by
+        (28, "Ivory", "james", "./images/producteurs/james_ivory.jpeg"), -- call me by
+        (29, "Vallelonga", "Nick", "./images/producteurs/nick_vallelonga.jpeg"), -- green book
+        (30, "Farrely", "Peter", "./images/producteurs/peter_farrely.jpeg"), -- green book
+        (31, "Luhrmann", "Baz", "./images/producteurs/baz_luhrmann.jpeg"), -- gatsby
+        (32, "Tarantino", "Quentin", "./images/producteurs/quentin_tarantino.jpg"), -- django
+        (33, "Fincher", "David", "./images/producteurs/david_fincher.jpeg"), -- benjamin
+        (34, "Penn", "Sean", "./images/producteurs/sean_penn.jpeg"); -- into the wild
 
 
 -- ---------------------------- --
